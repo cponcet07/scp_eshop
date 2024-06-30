@@ -11,6 +11,12 @@ const items = [
         "description": "Des lunettes spéciales pour voir dans le noir.",
         "image": "test.jpg"
     },
+        {
+        "title": "Scar légendaire",
+        "price": 1,
+        "description": "Une grosse scar bien puissante.",
+        "image": "scar.jpg"
+    },
     {
         "title": "Role SCP-173",
         "price": 15,
