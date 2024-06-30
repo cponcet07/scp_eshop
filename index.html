@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boutique SCP</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="css/articles.css" rel="stylesheet">
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+
+    <!-- Modal explicative -->
+    <div class="modal fade" id="infoModal" tabindex="-1" aria-labelledby="infoModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="infoModalLabel">Bienvenue dans la Boutique SCP</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="infoModalBody">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-5 flex-grow-1">
+        <h1 class="text-center mb-4">Boutique SCP</h1>
+        <div class="row" id="items-container">
+            <!-- Les articles seront insérés ici par JavaScript -->
+        </div>
+    </div>
+
+    <!-- Modale pour afficher les détails de l'article -->
+    <div class="modal fade" id="itemModal" tabindex="-1" aria-labelledby="itemModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="itemModalLabel">Détails de l'article</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <img id="modal-item-image" src="" class="img-fluid mb-3" alt="">
+                    <p id="modal-item-description"></p>
+                    <p><strong>Prix: €<span id="modal-item-price"></span></strong></p>
+                    <a id="modal-item-buy" href="" class="btn btn-buy">Acheter</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/items.js"></script>
+    <script src="js/modalMessage.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const itemsContainer = document.getElementById('items-container');
+            items.forEach(item => {
+                const itemCard = document.createElement('div');
+                itemCard.className = 'col-md-4 item-card';
+                itemCard.innerHTML = `
+                    <div class="card" data-bs-toggle="modal" data-bs-target="#itemModal" data-item-title="${item.title}" data-item-price="${item.price}" data-item-description="${item.description}" data-item-image="images/${item.image}">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">${item.title}</h5>
+                            <p class="card-text"><strong><i class="fas fa-tag"></i> €${item.price}</strong></p>
+                            <button class="btn btn-buy">Voir plus</button>
+                        </div>
+                    </div>
+                `;
+                itemsContainer.appendChild(itemCard);
+            });
+
+            const itemModal = document.getElementById('itemModal');
+            itemModal.addEventListener('show.bs.modal', function (event) {
+                const button = event.relatedTarget; // Button that triggered the modal
+                const title = button.getAttribute('data-item-title');
+                const price = button.getAttribute('data-item-price');
+                const description = button.getAttribute('data-item-description');
+                const image = button.getAttribute('data-item-image');
+                const buyLink = `https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=celiobusiness01@gmail.com&item_name=${encodeURIComponent(title)}&amount=${price}&currency_code=EUR`;
+
+                const modalTitle = itemModal.querySelector('.modal-title');
+                const modalPrice = itemModal.querySelector('#modal-item-price');
+                const modalDescription = itemModal.querySelector('#modal-item-description');
+                const modalImage = itemModal.querySelector('#modal-item-image');
+                const modalBuyLink = itemModal.querySelector('#modal-item-buy');
+
+                modalTitle.textContent = title;
+                modalPrice.textContent = price;
+                modalDescription.textContent = description;
+                modalImage.src = image;
+                modalBuyLink.href = buyLink;
+            });
+
+            // Afficher la modal explicative au chargement de la page
+            $(document).ready(function () {
+                $('#infoModalBody').html(modalMessage);
+                $('#infoModal').modal('show');
+            });
+        });
+    </script>
+</body>
+
+</html>
