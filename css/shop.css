@@ -1,0 +1,107 @@
+body {
+    background: url('../images/background.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: #333;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.8);
+
+}
+
+.item-card {
+    margin-bottom: 20px;
+    border: none;
+    padding: 20px;
+    border-radius: 10px;
+    transition: transform 0.2s;
+}
+
+.item-card:hover {
+    transform: scale(1.05);
+}
+
+.item-card .card-title,
+.item-card .card-text,
+.item-card .btn {
+    margin: 0;
+}
+
+.btn-buy {
+    background-color: #000;
+    color: #fff;
+    margin-top: 10px;
+}
+
+.modal-dialog-centered {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.modal-content {
+    border-radius: 10px;
+}
+
+.modal-body img {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+    height: auto;
+}
+
+
+h1 {
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.item-card {
+    border: none;
+    padding: 20px;
+    border-radius: 10px;
+    transition: transform 0.2s;
+
+}
+
+.card-title {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.card-text strong {
+    font-size: 1.2em;
+    color: #ff6347;
+}
+
+.btn-buy {
+    background-color: #000;
+    color: #fff;
+    margin-top: 10px;
+}
+
+.modal-dialog-centered {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.modal-content {
+    border-radius: 10px;
+}
+
+.modal-body img {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+    height: auto;
+
+}
+
+.modal-body .btn-buy {
+    display: block;
+    width: 100%;
+    text-align: center;
+}

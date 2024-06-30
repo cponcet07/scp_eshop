@@ -1,0 +1,48 @@
+body {
+    background-color: #000; /* Peut être supprimé si l'image de fond est utilisée */
+    background-image: url('./images/background2.jpg');
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+}
+
+h1 {
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+h2 {
+    color: #fff;
+}
+
+a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.btn-animate {
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.btn-animate:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+}
+
+.btn-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-group .btn {
+    flex: 1;
+    margin: 0 5px;
+}
+
+.align-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
